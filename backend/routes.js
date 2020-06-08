@@ -152,13 +152,10 @@ function getListHtmlString(list) {
 // nodemailer
 // **************************************
 const nodemailer = require("nodemailer");
+const { sendToEmail, emailCredentials } = require("./config");
+const sendToEmail = sendToEmail;
 
-const sendToEmail = "kyle.ko.apsey@gmail.com";
-
-const emailCredentials = {
-	user : "wegyein.coffee@gmail.com",
-	pass : "Orangy_oceania_toxic_mass"
-};
+const emailCredentials = emailCredentials;
 
 let transporter = nodemailer.createTransport({
 	service: "gmail",

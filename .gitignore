@@ -12,6 +12,7 @@
 */node_modules
 /backend/node_modules
 */backend/node_modules
+/backend/config.js
 /frontend/wegyein-coffee/node_modules
 */frontend/wegyein-coffee/node_modules
 
