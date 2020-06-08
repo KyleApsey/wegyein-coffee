@@ -1,0 +1,212 @@
+<main class="order">
+	<div class="container">
+		<div class="order__add">
+			<button class="btn" *ngIf="!orderConfirmed" (click)="addDrinkEspresso()">Add an espresso drink</button>
+			<button class="btn" *ngIf="!orderConfirmed" (click)="addDrinkAeroPress()">Add an Aeropress drink</button>
+			<button class="btn" *ngIf="!orderConfirmed" (click)="addDrinkFrenchPress()">Add a French Press drink</button>
+			<button class="btn" *ngIf="!orderConfirmed" (click)="addDrinkOther()">Add an Other drink</button>
+			<button class="btn" *ngIf="!orderConfirmed" (click)="addFood()">Add food</button>
+		</div>
+		<div *ngIf="!orderConfirmed">
+			<!-- espresso -->
+			<ul *ngIf="drinksEspresso.length">
+				<li *ngFor="let drink of drinksEspresso; index as index">
+					<h3>Espresso Drink {{index + 1}}</h3>
+					<p *ngIf="drink.type.length">{{drink.temp}} {{drink.drink}} with {{drink.shots}} extra shots (creamer: {{drink.creamer}})</p>
+					<form *ngIf="!drink.type.length" #orderFormEspresso="ngForm" (ngSubmit)="submitEspresso(orderFormEspresso, index)">
+						<!-- drink -->
+						<div>
+							<label for="drink_espresso_{{index}}">Which drink?</label>
+							<select name="drink_espresso_{{index}}" id="drink_espresso_{{index}}" ngModel="americano">
+								<option value="americano">Americano</option>
+								<option value="latte">Latte</option>
+								<option value="cappuccino">Cappuccino</option>
+								<option value="cortado">Cortado</option>
+							</select>
+						</div>
+						<!-- temp -->
+						<div>
+							<label for="temp_espresso_{{index}}">Iced or hot?</label>
+							<select name="temp_espresso_{{index}}" id="temp_espresso_{{index}}" ngModel="hot">
+								<option value="hot">Hot</option>
+								<option value="iced">Iced</option>
+							</select>
+						</div>
+						<!-- shots -->
+						<div>
+							<label for="shots_espresso_{{index}}">Add extra shots?</label>
+							<input type="number" name="shots_espresso_{{index}}" id="shots_espresso_{{index}}" min="0" value="0" ngModel="0"/>
+						</div>
+						<!-- creamer -->
+						<div>
+							<label for="creamer_espresso_{{index}}">Add creamer?</label>
+							<select name="creamer_espresso_{{index}}" id="creamer_espresso_{{index}}" ngModel="none">
+								<option value="none">none</option>
+								<option *ngFor="let creamer of menu?.creamers" value="{{creamer}}">{{creamer}}</option>
+							</select>
+						</div>
+						<button class="btn btn--add-to-order">Add drink to order</button>
+					</form>
+				</li>
+			</ul>
+			<!-- aeropress -->
+			<ul *ngIf="drinksAeroPress.length">
+				<li *ngFor="let drink of drinksAeroPress; index as index">
+					<h3>Aeropress Drink {{index + 1}}</h3>
+					<p *ngIf="drink.type.length">{{drink.temp}} {{drink.drink}} (creamer: {{drink.creamer}})</p>
+					<form *ngIf="!drink.type.length" #orderFormAeroPress="ngForm" (ngSubmit)="submitAeroPress(orderFormAeroPress, index)">
+						<!-- drink -->
+						<div>
+							<label for="drink_aeropress_{{index}}">Which drink?</label>
+							<select name="drink_aeropress_{{index}}" id="drink_aeropress_{{index}}" ngModel="aero americano">
+								<option value="aero americano">Aero Americano</option>
+								<option value="aero coffee">Aero Coffee</option>
+							</select>
+						</div>
+						<!-- temp -->
+						<div>
+							<label for="temp_aeropress_{{index}}">Iced or hot?</label>
+							<select name="temp_aeropress_{{index}}" id="temp_aeropress_{{index}}" ngModel="hot">
+								<option value="hot">Hot</option>
+								<option value="iced">Iced</option>
+							</select>
+						</div>
+						<!-- bean -->
+						<div>
+							<label for="bean_aeropress_{{index}}">Which bean?</label>
+							<select name="bean_aeropress_{{index}}" id="bean_aeropress_{{index}}" ngModel="{{menu?.beans[0].name}}">
+								<option *ngFor="let bean of menu?.beans" value="{{bean.name}}">{{bean.name}}</option>
+							</select>
+						</div>
+						<!-- creamer -->
+						<div>
+							<label for="creamer_aeropress_{{index}}">Add creamer?</label>
+							<select name="creamer_aeropress_{{index}}" id="creamer_aeropress_{{index}}" ngModel="none">
+								<option value="none">none</option>
+								<option *ngFor="let creamer of menu?.creamers" value="{{creamer}}">{{creamer}}</option>
+							</select>
+						</div>
+						<button class="btn btn--add-to-order">Add drink to order</button>
+					</form>
+				</li>
+			</ul>
+			<!-- french press -->
+			<ul *ngIf="drinksFrenchPress.length">
+				<li *ngFor="let drink of drinksFrenchPress; index as index">
+					<h3>French Press Drink {{index + 1}}</h3>
+					<p *ngIf="drink.type.length">Ethiopia French Press with {{drink.shots}} espresso shots (creamer: {{drink.creamer}})</p>
+					<form *ngIf="!drink.type.length" #orderFormFrenchPress="ngForm" (ngSubmit)="submitFrenchPress(orderFormFrenchPress, index)">
+						<!-- shots -->
+						<div>
+							<label for="shots_frenchpress_{{index}}">Add extra shots?</label>
+							<input type="number" name="shots_frenchpress_{{index}}" id="shots_frenchpress_{{index}}" min="0" value="0" ngModel="0"/>
+						</div>
+						<!-- creamer -->
+						<div>
+							<label for="creamer_frenchpress_{{index}}">Add creamer?</label>
+							<select name="creamer_frenchpress_{{index}}" id="creamer_frenchpress_{{index}}" ngModel="none">
+								<option value="none">none</option>
+								<option *ngFor="let creamer of menu?.creamers" value="{{creamer}}">{{creamer}}</option>
+							</select>
+						</div>
+						<button class="btn btn--add-to-order">Add drink to order</button>
+					</form>
+				</li>
+			</ul>
+			<!-- other drinks -->
+			<ul *ngIf="drinksOther.length">
+				<li *ngFor="let drink of drinksOther; index as index">
+					<h3>Other Drink {{index + 1}}</h3>
+					<p *ngIf="drink.type.length">{{drink.drink}}</p>
+					<form *ngIf="!drink.type.length" #orderFormOther="ngForm" (ngSubmit)="submitOther(orderFormOther, index)">
+						<!-- drink -->
+						<div>
+							<label for="drink_other_{{index}}">Which drink?</label>
+							<select name="drink_other_{{index}}" id="drink_other_{{index}}" ngModel="juice">
+								<option value="juice">Juice</option>
+								<option value="water">Water</option>
+								<option value="sparkling">Sparkling Water</option>
+							</select>
+						</div>
+						<button class="btn btn--add-to-order">Add drink to order</button>
+					</form>
+				</li>
+			</ul>
+			<!-- food -->
+			<ul *ngIf="orderFood.length">
+				<li *ngFor="let foodItem of orderFood; index as index">
+					<h3>Food Item {{index + 1}}</h3>
+					<p *ngIf="foodItem.length">{{foodItem}}</p>
+					<form *ngIf="!foodItem.length" #orderFormFood="ngForm" (ngSubmit)="submitFood(orderFormFood, index)">
+						<!-- drink -->
+						<div>
+							<label for="food_name_{{index}}">Which drink?</label>
+							<select name="food_name_{{index}}" id="food_name_{{index}}" ngModel="Cutie">
+								<option *ngFor="let food of menu?.food" [value]="food.name">{{food.name}}</option>
+							</select>
+						</div>
+						<button class="btn btn--add-to-order">Add food to order</button>
+					</form>
+				</li>
+			</ul>
+		</div>
+		<form *ngIf="showCustomerForm" #customerForm="ngForm" (ngSubmit)="addCustomer(customerForm)">
+			<h3 *ngIf="needValidCustomer">Please confirm your customer details before proceeding</h3>
+			<!-- name -->
+			<div>
+				<label for="customer_name">Name</label>
+				<input type="text" name="customer_name" id="customer_name" required ngModel/>
+			</div>
+			<!-- email -->
+			<div>
+				<label for="customer_email">Email Address</label>
+				<input type="email" name="customer_email" id="customer_email" required placeholder="myEmail@example.com" ngModel/>
+			</div>
+			<!-- togo -->
+			<div>
+				<label for="customer_togo">For here or togo?</label>
+				<select name="customer_togo" id="customer_togo" required ngModel="for here">
+					<option value="for here">For here</option>
+					<option value="to go">To go</option>
+				</select>
+			</div>
+			<button class="btn btn--customer-info">Confirm my details</button>
+		</form>
+		<div *ngIf="orderConfirmed">
+			<p>Order Sent!</p>
+
+			<ul>
+				<li>
+					<h3>Customer Details</h3>
+					<ul>
+					<li>{{customer.name}}</li>
+					<li>{{customer.email}}</li>
+					<li>Order is {{customer.togo}}</li>
+					</ul>
+				</li>
+				<li *ngIf="confirmedOrder.drinks.length">
+					<h3>Drinks</h3>
+					<ul>
+						<li *ngFor="let drink of confirmedOrder.drinks">
+							<p *ngIf="drink.type === 'espresso'">{{drink.temp}} {{drink.drink}} with {{drink.shots}} extra shots (creamer: {{drink.creamer}})</p>
+							<p *ngIf="drink.type === 'aero press'">{{drink.temp}} {{drink.drink}} (creamer: {{drink.creamer}})</p>
+							<p *ngIf="drink.type === 'french press'">Ethiopia French Press with {{drink.shots}} espresso shots (creamer: {{drink.creamer}})</p>
+							<p *ngIf="drink.type === 'other'">{{drink.drink}}</p>
+						</li>
+					</ul>
+				</li>
+				<li *ngIf="confirmedOrder.food.length">
+					<h3>Food</h3>
+					<ul>
+						<li *ngFor="let food of confirmedOrder.food">
+							<p>{{food}}</p>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<button *ngIf="!orderReady && (customer.name.length && customer.email.length && customer.togo.length) && (drinksEspresso.length || drinksAeroPress.length || drinksFrenchPress.length || drinksOther.length || orderFood.length)" title="If there are any items not added to your order, they will not be submitted.  Please double check your order" (click)="readyOrder()">Complete your order</button>
+		<button *ngIf="orderReady && !orderConfirmed && (confirmedOrder.drinks.length || confirmedOrder.food.length)" title="Last chance, if there are any items not added to your order, they will not be submitted.  Please triple check your order" (click)="submitOrder()">Confirm Order</button>
+	</div>
+</main>
+<app-menu></app-menu>

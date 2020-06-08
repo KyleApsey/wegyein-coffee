@@ -1,0 +1,61 @@
+<div class="container">
+	<button class="menu-toggle" (click)="toggleMenu()">View Menu</button>
+	<section [ngClass]="{'is-hidden' : !showMenu}" class="menu">
+		<h3 class="menu__section-heading">Coffee</h3>
+		<ul class="menu__section">
+			<li class="menu__section-item">
+				<h4 class="menu__sub-section-heading">Espresso</h4>
+				<ul class="menu__sub-section">
+					<li *ngFor="let drink of menu?.drinks.espresso" class="menu__sub-section-item">
+						<h5 class="menu__sub-section-item-heading">{{drink.name}}<i class="far fa-snowflake" *ngIf="drink.iced"></i></h5>
+					</li>
+				</ul>
+			</li>
+			<li class="menu__section-item">
+				<h4 class="menu__sub-section-heading">Aero Press</h4>
+				<ul class="menu__sub-section">
+					<li *ngFor="let drink of menu?.drinks.aeroPress" class="menu__sub-section-item">
+						<h5 class="menu__sub-section-item-heading">{{drink.name}}<i class="far fa-snowflake" *ngIf="drink.iced"></i></h5>
+					</li>
+				</ul>
+			</li>
+			<li class="menu__section-item">
+				<h4 class="menu__sub-section-heading">French Press</h4>
+				<ul class="menu__sub-section">
+					<li *ngFor="let drink of menu?.drinks.frenchPress" class="menu__sub-section-item">
+						<h5 class="menu__sub-section-item-heading">{{drink.name}}<i class="far fa-snowflake" *ngIf="drink.iced"></i></h5>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<h3 class="menu__section-heading">Non-coffee</h3>
+		<ul class="menu__section">
+			<li *ngFor="let drink of menu?.drinks.other" class="menu__section-item">
+				<h5 class="menu__section-item-heading">{{drink.name}}</h5>
+				<p class="menu__section-item-description">{{drink.misc}}</p>
+			</li>
+		</ul>
+		<h3 class="menu__section-heading">Food</h3>
+		<ul class="menu__section">
+			<li *ngFor="let food of menu?.food" class="menu__section-item">
+				<h5 class="menu__section-item-heading">{{food.name}}</h5>
+				<p class="menu__section-item-description">{{food.misc}}</p>
+			</li>
+		</ul>
+		<h3 class="menu__section-heading">Coffee Beans</h3>
+		<ul class="menu__section">
+			<li *ngFor="let bean of menu?.beans" class="menu__section-item">
+				<h5 class="menu__section-item-heading">{{bean.name}}</h5>
+				<ul class="menu__sub-section">
+					<li *ngFor="let type of bean.type" class="menu__sub-section-item">{{type}}</li>
+				</ul>
+			</li>
+		</ul>
+		<h3 class="menu__section-heading">Coffee Creamer</h3>
+		<ul class="menu__section">
+			<li *ngFor="let creamer of menu?.creamers" class="menu__section-item">
+				<h5 class="menu__section-item-heading">{{creamer}}</h5>
+			</li>
+		</ul>
+	</section>
+</div>

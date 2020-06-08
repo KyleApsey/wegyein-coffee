@@ -1,0 +1,9 @@
+/* btn */
+.btn--add-to-order { background-color: rgba(0,0,0,0.6); color: #ffffff; }
+.btn--add-to-order:hover { color: rgba(0, 0, 0, 1); background-color: rgba(0,0,0,0.2); }
+.btn--customer-info { background-color: rgba(0,0,0,0.6); color: #ffffff; }
+.btn--customer-info { color: rgba(0, 0, 0, 1); background-color: rgba(0,0,0,0.2); }
+
+/* order */
+.order { margin: 20px 0; }
+.order__add { display: flex; flex-direction: column; }

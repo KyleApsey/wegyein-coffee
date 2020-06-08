@@ -1,0 +1,28 @@
+/* User Agent Stylesheet Resets */
+body { margin: 0; padding: 0; }
+ul { margin: 0; padding: 0; }
+li { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4, h5, h6, p { margin: 0; padding: 0; }
+button { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+input { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+select { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+button::-moz-focus-inner { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+input::-moz-focus-inner { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+input[type="number"]::-webkit-inner-spin-button { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+input[type="number"]::-webkit-outer-spin-button { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+input[type="number"] { border:none; background-image:none; background-color:transparent; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; -moz-appearance: none; -webkit-appearance: none; margin: 0; padding: 0; }
+
+/* You can add global styles to this file, and also import other style files */
+
+body { font-size: 16px; font-family: "Gugi", sans-serif; }
+h1, h2, h3, h4, h5, h6, p { font-size: 1rem; font-weight: 400; }
+button { font-size: 16px; font-family: "Gugi", sans-serif; }
+app-root { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
+app-order { flex: 1; }
+
+/* container */
+.container { max-width: 1200px; width: 90%; margin: 0 auto; }
+
+/* btn */
+.btn { box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.3); padding: 5px; border: 1px solid rgba(0,0,0,0.4); margin-bottom: 5px; border-radius: 3px; transition: 0.3s; color: rgba(0, 0, 0, 0.6); background-color: #ffffff; }
+.btn:hover { box-shadow: none; transition: 0.3s; color: rgba(0,0,0,1); border-color: rgba(0,0,0,1); }
